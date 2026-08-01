@@ -1,0 +1,50 @@
+# VoidSwift Tools - Robots.txt
+# For Google, Bing, and other search engines
+
+# Allow all bots
+User-agent: *
+Allow: /
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.woff$
+Allow: /*.woff2$
+Allow: /*.ttf$
+Allow: /*.eot$
+
+# Disallow sensitive areas (none for this site currently)
+Disallow: 
+
+# Crawl delay (in seconds) - adjust based on server capacity
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://voidswift.site/sitemap.xml
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

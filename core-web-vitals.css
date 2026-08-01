@@ -1,0 +1,187 @@
+/* ========================================
+   CORE WEB VITALS OPTIMIZATION CSS
+   Performance & UX Enhancements
+   ======================================== */
+
+/* Optimize text rendering and font loading */
+html {
+    font-display: swap;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-display: swap;
+}
+
+/* Optimize images for Core Web Vitals */
+img, picture {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Prevent layout shift on images */
+img {
+    aspect-ratio: attr(width) / attr(height);
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Container queries for responsive performance */
+@supports (container-type: inline-size) {
+    .container {
+        container-type: inline-size;
+    }
+}
+
+/* Optimize font loading strategy */
+@font-face {
+    font-family: 'System';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+/* Lazy loading optimization */
+[loading="lazy"] {
+    background-color: var(--bg-secondary);
+}
+
+/* Prevent CLS with hero image */
+.hero::before {
+    content: '';
+    display: block;
+    padding-bottom: 33.333%;
+}
+
+/* Optimize modal performance */
+.modal {
+    will-change: auto;
+    contain: layout style paint;
+}
+
+.modal.visible {
+    will-change: opacity;
+}
+
+/* Optimize tool cards for LCP */
+.tool-card {
+    contain: layout style;
+    content-visibility: auto;
+}
+
+/* Improve search performance */
+.search-bar {
+    will-change: box-shadow;
+}
+
+/* Optimize transitions for performance */
+button, a, .tool-card {
+    transition: var(--transition-fast);
+}
+
+/* Prevent layout shift on hover/focus */
+button:hover, 
+button:focus,
+a:hover,
+a:focus {
+    outline-offset: 2px;
+}
+
+/* Optimize backdrop blur for performance */
+.modal::backdrop {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Improve CLS with proper line-height */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
+
+/* Prevent text shift */
+p {
+    margin-bottom: 1em;
+}
+
+/* Optimize grid layout */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--sp-lg);
+    contain: layout style paint;
+}
+
+/* Optimize FAQPage for performance */
+details {
+    contain: layout style;
+}
+
+details[open] {
+    contain: layout style paint;
+}
+
+/* Critical CSS for above-the-fold */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    contain: paint;
+}
+
+/* Optimize footer rendering */
+.footer {
+    contain: layout style paint;
+}
+
+/* Network request optimization */
+@media (prefers-color-scheme: dark) {
+    :root.dark {
+        color-scheme: dark;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color-scheme: light;
+    }
+}
+
+/* Reduce repaints on scroll */
+.back-to-top {
+    will-change: opacity;
+    contain: layout style paint;
+}
+
+/* Optimize loading states */
+[aria-busy="true"] {
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Performance: Reduce blur on non-critical elements */
+@supports (backdrop-filter: blur(0)) {
+    .modal::backdrop {
+        backdrop-filter: blur(2px);
+    }
+}
+
+/* Lazy load non-critical CSS features */
+@supports (gap: var(--sp-lg)) {
+    .features-grid {
+        gap: var(--sp-lg);
+    }
+}
